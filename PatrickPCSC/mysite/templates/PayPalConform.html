@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+
+ <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					{% if error %} <p class=error><strong><font color="red">Error:</strong> {{ error }}</font>{% endif %}
+                    <h2>Are you sure you want this amount added to your account</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+						<body class="body">
+							<div class="container">
+									<form name="topaypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+										<input type="hidden" name="cmd" value="_xclick">
+										<!--<input type="hidden" name="custom" value="{{session['username']}}"/>-->
+										<input type="hidden" name="business" value="pctestpal@test.com">
+										<input type="hidden" name="item_name" value="Add money">
+										<input type="hidden" name="item_number" value="500">
+										<input type="hidden" name="no_shipping" value="1">
+										<input type="hidden" name="amount" value={{ amont }}>
+										 <div class="row control-group">
+										<div class="form-group col-xs-12 floating-label-form-group controls">
+											<label>Are you sure you want to add the amonet</label>
+
+											 <input type="number" name="a3" value={{ amont }} disabled>
+
+										   <p class="help-block text-danger"></p>
+										</div>
+
+										<input type="hidden" name="p3" value="1">
+										<input type="hidden" name="t3" value="M">
+										<input type="hidden" name="src" value="1">
+										<input type="hidden" name="sra" value="1">
+										<input type="hidden" name="return" value="http://patrickpcsc.pythonanywhere.com/PayPalPrchase">
+										<input type="hidden" name="cancel_return" value="http://patrickpcsc.pythonanywhere.com/home">
+										<input type="hidden" name="notify_url" value="http://patrickpcsc.pythonanywhere.com/ipn/">
+										<br>
+										<div id="success"></div>
+										 <div class="row">
+										<div class="form-group col-xs-12">
+
+									    <input type="submit" value="Add" name="submit" title="PayPal - The safer, easier way to pay online!" class="btn btn-success btn-lg">
+									    <button onclick="goBack()" class="btn btn-success btn-lg">Go Back</button>
+
+									    </form>
+										</div>
+										</div>
+										</div>
+									</form>
+							</div>
+						</body>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+<section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>{% if error %} <p class=error><strong><font color="red">Error:</strong> {{ error }}</font>{% endif %}</h2>
+                    <h2>{% if good %} <p class=error><strong><font></strong> {{ good }}</font>{% endif %}</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+			   <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+
+
+					<form action="/home" >
+
+						<br>
+						<br>
+						<br>
+						<br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Back</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
