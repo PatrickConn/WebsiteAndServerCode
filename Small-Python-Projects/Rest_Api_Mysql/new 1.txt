@@ -1,0 +1,40 @@
+# Patrick Connauhotn
+# C00167985
+
+
+from flask import Flask,flash,redirect,url_for, render_template, request, jsonify, session,request
+
+import json
+import sys
+sys.path.append('/home/markstadt/.local/lib/python/site-packages')
+import DBcm
+
+#import mysql.connector
+
+
+# Open database connection
+#db = mysql.connector.connect("localhost","PatrickPCSC","p30401","PatrickPCSC$temp" )
+
+
+DBconfig = { 'host': '127.0.0.1',
+                 'user': 'PatrickPCSC',
+                 'password': 'p30401',
+                 'database': 'PatrickPCSC$temp' }
+
+
+app = Flask(__name__)
+
+
+@app.route('/login/andriod', methods=['GET'])
+def Log_Andriod():
+	with DBcm.UseDatabase(DBconfig) as cursor:
+			_SQL = "SELECT * FROM usertable WHERE User=%s"
+			cursor.execute(_SQL, ('test',))
+			data = cursor.fetchall()
+			test = ','.join(str(v) for v in data[0])
+			result = json.dumps(test)
+	return str(result)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

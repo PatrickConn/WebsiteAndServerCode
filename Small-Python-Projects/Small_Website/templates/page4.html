@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block body %}
+
+This is the registration page.
+
+<form action="/data" method="POST">
+<p>
+User: <input type="TEXT" name="User"><br>
+Password: <input type="Password" name="Password"><br>
+E-mail: <input type="Email" name="Email"><br>
+<input type="radio" name="Admin" value="Admin" checked>Admin
+<br><br>
+<input type="radio" name="Admin" value="Regular">Regular
+</p>
+<p>
+<input type="SUBMIT" value="Registration!">
+</p>
+</form>
+
+
+
+{% endblock %}
+
